@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ЖестьModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ЖестьEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="авторизация" EntityType="ЖестьModel.авторизация" />
+    <EntitySet Name="Заказы" EntityType="ЖестьModel.Заказы" />
+    <EntitySet Name="Исполнители" EntityType="ЖестьModel.Исполнители" />
+    <EntitySet Name="Клиенты" EntityType="ЖестьModel.Клиенты" />
+    <EntitySet Name="Организация" EntityType="ЖестьModel.Организация" />
+    <EntitySet Name="Сотрудники" EntityType="ЖестьModel.Сотрудники" />
+    <EntitySet Name="Статусы_заказов" EntityType="ЖестьModel.Статусы_заказов" />
+    <EntitySet Name="Услуги" EntityType="ЖестьModel.Услуги" />
+    <AssociationSet Name="FK_авторизация_Сотрудники" Association="ЖестьModel.FK_авторизация_Сотрудники">
+      <End Role="Сотрудники" EntitySet="Сотрудники" />
+      <End Role="авторизация" EntitySet="авторизация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказы_Исполнители" Association="ЖестьModel.FK_Заказы_Исполнители">
+      <End Role="Исполнители" EntitySet="Исполнители" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказы_Клиенты" Association="ЖестьModel.FK_Заказы_Клиенты">
+      <End Role="Клиенты" EntitySet="Клиенты" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказы_Статусы_заказов" Association="ЖестьModel.FK_Заказы_Статусы_заказов">
+      <End Role="Статусы_заказов" EntitySet="Статусы_заказов" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказы_Услуги" Association="ЖестьModel.FK_Заказы_Услуги">
+      <End Role="Услуги" EntitySet="Услуги" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Исполнители_Сотрудники1" Association="ЖестьModel.FK_Исполнители_Сотрудники1">
+      <End Role="Сотрудники" EntitySet="Сотрудники" />
+      <End Role="Исполнители" EntitySet="Исполнители" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Клиенты_Организация" Association="ЖестьModel.FK_Клиенты_Организация">
+      <End Role="Организация" EntitySet="Организация" />
+      <End Role="Клиенты" EntitySet="Клиенты" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="авторизация">
+    <Key>
+      <PropertyRef Name="Код_авторизация" />
+    </Key>
+    <Property Name="Код_авторизация" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Логин" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Пароль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_сотрудника" Type="Int32" Nullable="false" />
+    <Property Name="Аватарка" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Сотрудники" Relationship="ЖестьModel.FK_авторизация_Сотрудники" FromRole="авторизация" ToRole="Сотрудники" />
+  </EntityType>
+  <EntityType Name="Заказы">
+    <Key>
+      <PropertyRef Name="id_заказа" />
+    </Key>
+    <Property Name="id_заказа" Type="Int32" Nullable="false" />
+    <Property Name="Дата_исполнения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Номер_Договора" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Клиент" Type="Int32" />
+    <Property Name="Дата_создания" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_статус_заказов" Type="Int32" />
+    <Property Name="id_Услуги" Type="Int32" />
+    <NavigationProperty Name="Исполнители" Relationship="ЖестьModel.FK_Заказы_Исполнители" FromRole="Заказы" ToRole="Исполнители" />
+    <NavigationProperty Name="Клиенты" Relationship="ЖестьModel.FK_Заказы_Клиенты" FromRole="Заказы" ToRole="Клиенты" />
+    <NavigationProperty Name="Статусы_заказов" Relationship="ЖестьModel.FK_Заказы_Статусы_заказов" FromRole="Заказы" ToRole="Статусы_заказов" />
+    <NavigationProperty Name="Услуги" Relationship="ЖестьModel.FK_Заказы_Услуги" FromRole="Заказы" ToRole="Услуги" />
+  </EntityType>
+  <EntityType Name="Исполнители">
+    <Key>
+      <PropertyRef Name="Заказ" />
+    </Key>
+    <Property Name="Заказ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Исполнитель" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Заказы" Relationship="ЖестьModel.FK_Заказы_Исполнители" FromRole="Исполнители" ToRole="Заказы" />
+    <NavigationProperty Name="Сотрудники" Relationship="ЖестьModel.FK_Исполнители_Сотрудники1" FromRole="Исполнители" ToRole="Сотрудники" />
+  </EntityType>
+  <EntityType Name="Клиенты">
+    <Key>
+      <PropertyRef Name="id_клиента" />
+    </Key>
+    <Property Name="id_клиента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Организация" Type="Int32" Nullable="false" />
+    <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Номер_телефона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Заказы" Relationship="ЖестьModel.FK_Заказы_Клиенты" FromRole="Клиенты" ToRole="Заказы" />
+    <NavigationProperty Name="Организация1" Relationship="ЖестьModel.FK_Клиенты_Организация" FromRole="Клиенты" ToRole="Организация" />
+  </EntityType>
+  <EntityType Name="Организация">
+    <Key>
+      <PropertyRef Name="Код_организации" />
+    </Key>
+    <Property Name="Код_организации" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Полное_название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Клиенты" Relationship="ЖестьModel.FK_Клиенты_Организация" FromRole="Организация" ToRole="Клиенты" />
+  </EntityType>
+  <EntityType Name="Сотрудники">
+    <Key>
+      <PropertyRef Name="id_сотрудника" />
+    </Key>
+    <Property Name="id_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Паспорт_данные" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Квалификация" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Стаж" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Должность" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="авторизация" Relationship="ЖестьModel.FK_авторизация_Сотрудники" FromRole="Сотрудники" ToRole="авторизация" />
+    <NavigationProperty Name="Исполнители" Relationship="ЖестьModel.FK_Исполнители_Сотрудники1" FromRole="Сотрудники" ToRole="Исполнители" />
+  </EntityType>
+  <EntityType Name="Статусы_заказов">
+    <Key>
+      <PropertyRef Name="id_статуса_заказа" />
+    </Key>
+    <Property Name="id_статуса_заказа" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Заказы" Relationship="ЖестьModel.FK_Заказы_Статусы_заказов" FromRole="Статусы_заказов" ToRole="Заказы" />
+  </EntityType>
+  <EntityType Name="Услуги">
+    <Key>
+      <PropertyRef Name="id_услуги" />
+    </Key>
+    <Property Name="id_услуги" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Цена" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Заказы" Relationship="ЖестьModel.FK_Заказы_Услуги" FromRole="Услуги" ToRole="Заказы" />
+  </EntityType>
+  <Association Name="FK_авторизация_Сотрудники">
+    <End Type="ЖестьModel.Сотрудники" Role="Сотрудники" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ЖестьModel.авторизация" Role="авторизация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудники">
+        <PropertyRef Name="id_сотрудника" />
+      </Principal>
+      <Dependent Role="авторизация">
+        <PropertyRef Name="id_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказы_Исполнители">
+    <End Type="ЖестьModel.Исполнители" Role="Исполнители" Multiplicity="1" />
+    <End Type="ЖестьModel.Заказы" Role="Заказы" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Исполнители">
+        <PropertyRef Name="Заказ" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="id_заказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказы_Клиенты">
+    <End Type="ЖестьModel.Клиенты" Role="Клиенты" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ЖестьModel.Заказы" Role="Заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиенты">
+        <PropertyRef Name="id_клиента" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="Клиент" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказы_Статусы_заказов">
+    <End Type="ЖестьModel.Статусы_заказов" Role="Статусы_заказов" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ЖестьModel.Заказы" Role="Заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Статусы_заказов">
+        <PropertyRef Name="id_статуса_заказа" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="id_статус_заказов" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказы_Услуги">
+    <End Type="ЖестьModel.Услуги" Role="Услуги" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ЖестьModel.Заказы" Role="Заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Услуги">
+        <PropertyRef Name="id_услуги" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="id_Услуги" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Исполнители_Сотрудники1">
+    <End Type="ЖестьModel.Сотрудники" Role="Сотрудники" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ЖестьModel.Исполнители" Role="Исполнители" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудники">
+        <PropertyRef Name="id_сотрудника" />
+      </Principal>
+      <Dependent Role="Исполнители">
+        <PropertyRef Name="Исполнитель" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Клиенты_Организация">
+    <End Type="ЖестьModel.Организация" Role="Организация" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ЖестьModel.Клиенты" Role="Клиенты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Организация">
+        <PropertyRef Name="Код_организации" />
+      </Principal>
+      <Dependent Role="Клиенты">
+        <PropertyRef Name="Организация" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0ccee20aebf4c22acf623c9570bd780" Name="Diagram1">
+        <EntityTypeShape EntityType="ЖестьModel.авторизация" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="ЖестьModel.Заказы" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="ЖестьModel.Исполнители" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="ЖестьModel.Клиенты" Width="1.5" PointX="3" PointY="10.375" />
+        <EntityTypeShape EntityType="ЖестьModel.Организация" Width="1.5" PointX="0.75" PointY="10.625" />
+        <EntityTypeShape EntityType="ЖестьModel.Сотрудники" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="ЖестьModel.Статусы_заказов" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="ЖестьModel.Услуги" Width="1.5" PointX="3" PointY="13.875" />
+        <AssociationConnector Association="ЖестьModel.FK_авторизация_Сотрудники" />
+        <AssociationConnector Association="ЖестьModel.FK_Заказы_Исполнители" />
+        <AssociationConnector Association="ЖестьModel.FK_Заказы_Клиенты" />
+        <AssociationConnector Association="ЖестьModel.FK_Заказы_Статусы_заказов" />
+        <AssociationConnector Association="ЖестьModel.FK_Заказы_Услуги" />
+        <AssociationConnector Association="ЖестьModel.FK_Исполнители_Сотрудники1" />
+        <AssociationConnector Association="ЖестьModel.FK_Клиенты_Организация" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

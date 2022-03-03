@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ЖестьModelContainer" CdmEntityContainer="ЖестьEntities">
+    <EntitySetMapping Name="авторизация">
+      <EntityTypeMapping TypeName="ЖестьModel.авторизация">
+        <MappingFragment StoreEntitySet="авторизация">
+          <ScalarProperty Name="Аватарка" ColumnName="Аватарка" />
+          <ScalarProperty Name="id_сотрудника" ColumnName="id_сотрудника" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Код_авторизация" ColumnName="Код_авторизация" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заказы">
+      <EntityTypeMapping TypeName="ЖестьModel.Заказы">
+        <MappingFragment StoreEntitySet="Заказы">
+          <ScalarProperty Name="id_Услуги" ColumnName="id_Услуги" />
+          <ScalarProperty Name="id_статус_заказов" ColumnName="id_статус_заказов" />
+          <ScalarProperty Name="Дата_создания" ColumnName="Дата_создания" />
+          <ScalarProperty Name="Клиент" ColumnName="Клиент" />
+          <ScalarProperty Name="Номер_Договора" ColumnName="Номер_Договора" />
+          <ScalarProperty Name="Дата_исполнения" ColumnName="Дата_исполнения" />
+          <ScalarProperty Name="id_заказа" ColumnName="id_заказа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Исполнители">
+      <EntityTypeMapping TypeName="ЖестьModel.Исполнители">
+        <MappingFragment StoreEntitySet="Исполнители">
+          <ScalarProperty Name="Исполнитель" ColumnName="Исполнитель" />
+          <ScalarProperty Name="Заказ" ColumnName="Заказ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Клиенты">
+      <EntityTypeMapping TypeName="ЖестьModel.Клиенты">
+        <MappingFragment StoreEntitySet="Клиенты">
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Организация" ColumnName="Организация" />
+          <ScalarProperty Name="id_клиента" ColumnName="id_клиента" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Организация">
+      <EntityTypeMapping TypeName="ЖестьModel.Организация">
+        <MappingFragment StoreEntitySet="Организация">
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Полное_название" ColumnName="Полное_название" />
+          <ScalarProperty Name="Код_организации" ColumnName="Код_организации" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сотрудники">
+      <EntityTypeMapping TypeName="ЖестьModel.Сотрудники">
+        <MappingFragment StoreEntitySet="Сотрудники">
+          <ScalarProperty Name="Должность" ColumnName="Должность" />
+          <ScalarProperty Name="Стаж" ColumnName="Стаж" />
+          <ScalarProperty Name="Квалификация" ColumnName="Квалификация" />
+          <ScalarProperty Name="Паспорт_данные" ColumnName="Паспорт_данные" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="id_сотрудника" ColumnName="id_сотрудника" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Статусы_заказов">
+      <EntityTypeMapping TypeName="ЖестьModel.Статусы_заказов">
+        <MappingFragment StoreEntitySet="Статусы заказов">
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="id_статуса_заказа" ColumnName="id_статуса_заказа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Услуги">
+      <EntityTypeMapping TypeName="ЖестьModel.Услуги">
+        <MappingFragment StoreEntitySet="Услуги">
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="id_услуги" ColumnName="id_услуги" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
